@@ -1,4 +1,32 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Env files (keep local, not in git)
+.env*
+
+# Vercel
+.vercel/
+
+# Coverage/Temp
+coverage/
+*.local
+*.tmp
+*.swp# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules

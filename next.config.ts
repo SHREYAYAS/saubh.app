@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Enable Turbopack explicitly
+  turbopack: {},
+  
+  // PWA configuration will be handled differently in production
+  // For now, we'll keep it simple for development
 };
 
 export default nextConfig;
