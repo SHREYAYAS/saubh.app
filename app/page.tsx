@@ -48,7 +48,7 @@ const HomePage = () => {
               height={32}
               className="h-8 w-8 object-contain" 
             />
-            <span className="text-xl font-bold text-gray-800">SaubhApp</span>
+            <span className="text-xl font-bold text-gray-800 dark:text-white">SaubhApp</span>
           </div>
           
           {/* Desktop Navigation Links (Hidden on small screens) */}
@@ -288,33 +288,33 @@ const HomePage = () => {
   <section className="py-16" id="about">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-center text-4xl font-extrabold text-gray-900 dark:text-white mb-8">About <span className="text-indigo-600">SaubhApp</span></h2>
+              <h2 className="text-center text-4xl font-extrabold text-gray-900 dark:text-white mb-8">About <span className="text-indigo-600 dark:text-indigo-400">SaubhApp</span></h2>
               <div className="bg-white dark:bg-white/5 rounded-xl p-8 shadow-lg dark:shadow-none">
-                <p className="text-lg text-gray-700 mb-6">
+                <p className="text-lg text-gray-700 dark:text-gray-200 mb-6">
                   SaubhApp is a cutting-edge Progressive Web Application designed to deliver exceptional performance 
                   and user experience across all devices. Built with modern web technologies, we ensure your productivity 
                   tools are always accessible, whether you're online or offline.
                 </p>
-                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                <p className="text-lg text-gray-700 dark:text-gray-200 mb-6">
                   Our mission is to empower individuals and teams with reliable, fast, and intuitive tools that adapt 
                   to their workflow. With Next.js at our core and Tailwind CSS for beautiful design, we're setting 
                   new standards for web applications.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                   <div className="text-center">
-                    <Image src="/icons/users.svg" alt="Active Users" width={40} height={40} className="mx-auto mb-2" />
-                    <div className="text-3xl font-bold text-indigo-600 mb-2">10k+</div>
-                    <div className="text-gray-600">Active Users</div>
+                    <Image src="/icons/users.svg" alt="Active Users" width={40} height={40} className="mx-auto mb-2 dark:invert" />
+                    <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">10k+</div>
+                    <div className="text-gray-600 dark:text-gray-300">Active Users</div>
                   </div>
                   <div className="text-center">
-                    <Image src="/icons/uptime.svg" alt="Uptime" width={40} height={40} className="mx-auto mb-2" />
-                    <div className="text-3xl font-bold text-indigo-600 mb-2">99.9%</div>
-                    <div className="text-gray-600">Uptime</div>
+                    <Image src="/icons/uptime.svg" alt="Uptime" width={40} height={40} className="mx-auto mb-2 dark:invert" />
+                    <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">99.9%</div>
+                    <div className="text-gray-600 dark:text-gray-300">Uptime</div>
                   </div>
                   <div className="text-center">
-                    <Image src="/icons/support.svg" alt="Support" width={40} height={40} className="mx-auto mb-2" />
-                    <div className="text-3xl font-bold text-indigo-600 mb-2">24/7</div>
-                    <div className="text-gray-600">Support</div>
+                    <Image src="/icons/support.svg" alt="Support" width={40} height={40} className="mx-auto mb-2 dark:invert" />
+                    <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">24/7</div>
+                    <div className="text-gray-600 dark:text-gray-300">Support</div>
                   </div>
                 </div>
               </div>

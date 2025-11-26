@@ -78,12 +78,12 @@ export default function ThemeSwitcher() {
   // Prevent hydration mismatch
   if (!mounted) {
     return (
-      <label className="inline-flex items-center gap-2 text-sm text-gray-600">
+      <label className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
         <span className="hidden md:inline">Theme:</span>
         <select
           aria-label="Select theme"
           disabled
-          className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-800 dark:text-gray-200 px-2 py-1 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           <option>Default</option>
         </select>
@@ -92,13 +92,13 @@ export default function ThemeSwitcher() {
   }
 
   return (
-    <label className="inline-flex items-center gap-2 text-sm text-gray-600">
+    <label className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
       <span className="hidden md:inline">Theme:</span>
       <select
         aria-label="Select theme"
         value={theme}
         onChange={(e) => onChange(e.target.value as ThemeKey)}
-        className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-800 dark:text-gray-200 px-2 py-1 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
       >
         <option value="default">Default</option>
         <option value="cooler">Cooler</option>
