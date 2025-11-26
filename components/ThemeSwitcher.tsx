@@ -42,6 +42,7 @@ const ALL_THEME_TOKENS = Array.from(
 
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState<ThemeKey>("default");
+  const [mounted, setMounted] = useState(false);
 
   // Apply theme to <body>
   const applyTheme = (key: ThemeKey) => {
@@ -61,6 +62,7 @@ export default function ThemeSwitcher() {
   };
 
   useEffect(() => {
+    setMounted(true);
     const saved = (localStorage.getItem("saubh-theme") as ThemeKey) || "default";
     setTheme(saved);
     applyTheme(saved);
@@ -72,6 +74,22 @@ export default function ThemeSwitcher() {
     localStorage.setItem("saubh-theme", key);
     applyTheme(key);
   };
+
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <label className="inline-flex items-center gap-2 text-sm text-gray-600">
+        <span className="hidden md:inline">Theme:</span>
+        <select
+          aria-label="Select theme"
+          disabled
+          className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          <option>Default</option>
+        </select>
+      </label>
+    );
+  }
 
   return (
     <label className="inline-flex items-center gap-2 text-sm text-gray-600">
