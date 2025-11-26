@@ -49,8 +49,12 @@ export default function ThemeSwitcher() {
     // Determine actual theme to apply
     const actualTheme = key === "system" ? getSystemTheme() : key;
     
-    // Add chosen theme tokens
-    body.classList.add(...THEME_CLASSES[actualTheme]);
+    // Add chosen theme tokens (only if actualTheme has classes)
+    const themesToApply = actualTheme === "light" || actualTheme === "dark" 
+      ? THEME_CLASSES[actualTheme] 
+      : THEME_CLASSES.light;
+    
+    body.classList.add(...themesToApply);
     
     // Toggle class-based dark mode for Tailwind
     if (actualTheme === "dark") {
