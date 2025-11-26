@@ -152,7 +152,7 @@ const HomePage = () => {
             <div className="mt-10 flex justify-center space-x-4 flex-wrap gap-4">
               <Link href="/get-started" aria-label="Start free trial">
                 <button 
-                  className="rounded-xl bg-gradient-to-r from-indigo-600 to-pink-500 px-10 py-4 text-xl font-bold text-white shadow-2xl hover:scale-105 hover:from-indigo-700 hover:to-pink-600 transition duration-300"
+                  className="rounded-xl bg-linear-to-r from-indigo-600 to-pink-500 px-10 py-4 text-xl font-bold text-white shadow-2xl hover:scale-105 hover:from-indigo-700 hover:to-pink-600 transition duration-300"
                 >
                   Start Free Trial
                 </button>
