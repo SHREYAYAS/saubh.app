@@ -4,7 +4,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import ThemeSwitcher from '../components/ThemeSwitcher';
 
 const HomePage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -53,7 +52,7 @@ const HomePage = () => {
           
           {/* Desktop Navigation Links (Hidden on small screens) */}
           <nav className="hidden space-x-6 md:flex">
-            {['CRM', 'Tools', 'Service', 'Mart', 'Login', 'Pricing', 'About'].map((item) => (
+            {['CRM', 'Tools', 'Service', 'Mart'].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase()}`} 
@@ -66,10 +65,15 @@ const HomePage = () => {
                 {item}
               </a>
             ))}
+            <Link
+              href="/login"
+              className="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-300 transition duration-300 font-medium"
+            >
+              Login
+            </Link>
           </nav>
           
           <div className="hidden md:flex items-center gap-4">
-            <ThemeSwitcher />
           <Link
             href="/get-started"
             aria-label="Get started with SaubhApp"
@@ -111,7 +115,7 @@ const HomePage = () => {
             aria-hidden={!mobileMenuOpen}
           >
             <nav className="flex flex-col space-y-2 p-4">
-              {['CRM', 'Tools', 'Service', 'Mart', 'Login', 'Pricing', 'About'].map((item) => (
+              {['CRM', 'Tools', 'Service', 'Mart'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -125,9 +129,13 @@ const HomePage = () => {
                   {item}
                 </a>
               ))}
-              <div className="py-2">
-                <ThemeSwitcher />
-              </div>
+              <Link
+                href="/login"
+                className="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-300 transition duration-300 font-medium py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Login
+              </Link>
               <Link
                 href="/get-started"
                 className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 transition duration-300 mt-2 w-full inline-flex items-center justify-center"
@@ -141,26 +149,108 @@ const HomePage = () => {
 
   <main className="grow">
         {/* Hero Section with Animated Background */}
-  <section className="relative py-20 md:py-32 overflow-hidden bg-linear-to-br from-indigo-50 to-pink-50 dark:from-slate-900 dark:to-slate-800" id="hero">
-          <div className="container mx-auto px-6 text-center relative">
-            <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl md:text-7xl">
-              No Business Without a Brand. <span className="text-indigo-600 dark:text-indigo-400">No Brand Without Trust</span>
-            </h1>
-            <p className="mt-6 text-xl text-gray-700 dark:text-gray-200 md:text-2xl max-w-3xl mx-auto font-medium">
-              Saubh helps businesses transform authentic User Generated Content (UGC) and people-to-people Digital Media Amplification (DMA) into 4X-12X higher organic reach at 60% lower cost.
-            </p>
-            <p className="mt-2 text-lg text-indigo-600 dark:text-indigo-300 font-bold">Loved by thousands of users worldwide</p>
-            <div className="mt-10 flex justify-center space-x-4 flex-wrap gap-4">
+  <section className="relative py-16 md:py-28 overflow-hidden bg-linear-to-br from-slate-900 via-slate-800 to-slate-900" id="hero">
+          {/* Animated background elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-linear-to-br from-indigo-500/10 to-transparent rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-linear-to-tl from-pink-500/10 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          </div>
+
+          <div className="container mx-auto px-4 md:px-6 relative max-w-7xl">
+            {/* Main Headline */}
+            <div className="text-center mb-12 md:mb-16">
+              <div className="flex flex-col md:flex-row items-center justify-center mb-8 gap-4">
+                <span className="text-5xl md:text-6xl animate-bounce">🎯</span>
+                <h1 className="text-3xl font-extrabold tracking-tight bg-linear-to-r from-white via-gray-100 to-white bg-clip-text text-transparent sm:text-4xl md:text-5xl lg:text-6xl leading-tight drop-shadow-2xl">
+                  No Business Without a Brand.
+                </h1>
+              </div>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-8 leading-tight animate-pulse drop-shadow-[0_0_30px_rgba(168,85,247,0.4)]">
+                No Brand Without Trust
+              </h2>
+              <p className="text-xl md:text-2xl bg-linear-to-r from-gray-200 via-white to-gray-200 bg-clip-text text-transparent font-bold max-w-3xl mx-auto drop-shadow-lg">
+                Saubh converts social proof into organic leads.
+              </p>
+            </div>
+
+            {/* Extended Description */}
+            <div className="max-w-6xl mx-auto mb-12 text-left">
+              {/* Stats Box */}
+              <div className="bg-linear-to-r from-slate-800/80 to-slate-700/80 backdrop-blur-md rounded-3xl p-6 md:p-10 mb-8 border border-slate-600/50 shadow-2xl hover:shadow-indigo-500/20 transition-all duration-300">
+                <p className="text-base md:text-lg text-gray-100 leading-relaxed">
+                  Your brand is more than a logo — in this digital economy, consumers trust their peers <span className="text-indigo-400 font-bold text-xl">93% more</span> than traditional advertising. Saubh helps businesses transform authentic <span className="text-pink-400 font-bold">User Generated Content (UGC)</span> and people-to-people <span className="text-pink-400 font-bold">Digital Media Amplification (DMA)</span> into <span className="text-indigo-400 font-bold text-xl">4X-12X higher organic reach</span> at <span className="text-green-400 font-bold text-xl">60% lower cost</span>.
+                </p>
+              </div>
+              
+              <h2 className="text-2xl md:text-4xl font-bold text-white mb-8 text-center">
+                Stop Paying for Ads People Ignore
+              </h2>
+              
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-6">
+                {/* The Shift Is Happening */}
+                <div className="bg-linear-to-br from-slate-800/80 to-slate-700/80 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-slate-600/50 hover:border-indigo-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/20 hover:scale-105">
+                  <h3 className="text-xl md:text-2xl font-bold text-indigo-400 mb-4 flex items-center">
+                    <span className="mr-3 text-2xl">⚡</span> The Shift Is Happening
+                  </h3>
+                  <p className="text-gray-300 mb-4 leading-relaxed text-sm md:text-base">
+                    Traditional advertising is dying. People use ad blockers. They skip commercials. They don't trust brands who shout at them.
+                  </p>
+                  
+                  <p className="text-white font-bold mb-3 text-base md:text-lg">But they trust</p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start text-gray-300 text-sm md:text-base group">
+                      <span className="text-green-400 mr-3 text-xl shrink-0 group-hover:scale-125 transition-transform">✓</span>
+                      <span>The individual who genuinely loves your product</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 text-sm md:text-base group">
+                      <span className="text-green-400 mr-3 text-xl shrink-0 group-hover:scale-125 transition-transform">✓</span>
+                      <span>The people who solved a problem with your service</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 text-sm md:text-base group">
+                      <span className="text-green-400 mr-3 text-xl shrink-0 group-hover:scale-125 transition-transform">✓</span>
+                      <span>The local influencer whose taste they respect</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Saubh gives you */}
+                <div className="bg-linear-to-br from-slate-800/80 to-slate-700/80 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-slate-600/50 hover:border-pink-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/20 hover:scale-105">
+                  <h3 className="text-xl md:text-2xl font-bold text-pink-400 mb-4 flex items-center">
+                    <span className="mr-3 text-2xl">🚀</span> Saubh gives you
+                  </h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start text-gray-300 text-sm md:text-base group">
+                      <span className="text-indigo-400 mr-3 text-xl shrink-0 group-hover:scale-125 transition-transform">✓</span>
+                      <span><span className="font-bold text-white">Scalable content creation</span> without hiring agencies</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 text-sm md:text-base group">
+                      <span className="text-indigo-400 mr-3 text-xl shrink-0 group-hover:scale-125 transition-transform">✓</span>
+                      <span><span className="font-bold text-white">Authentic voices</span> without begging for reviews</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 text-sm md:text-base group">
+                      <span className="text-indigo-400 mr-3 text-xl shrink-0 group-hover:scale-125 transition-transform">✓</span>
+                      <span><span className="font-bold text-white">Measurable results</span> without black-box analytics</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 text-sm md:text-base group">
+                      <span className="text-indigo-400 mr-3 text-xl shrink-0 group-hover:scale-125 transition-transform">✓</span>
+                      <span><span className="font-bold text-white">ROI that actually makes sense</span></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex justify-center space-x-4 flex-wrap gap-4">
               <Link
                 href="/get-started"
                 aria-label="Start free trial"
-                className="rounded-xl bg-linear-to-r from-indigo-600 to-pink-500 px-10 py-4 text-xl font-bold text-white shadow-2xl hover:scale-105 hover:from-indigo-700 hover:to-pink-600 transition duration-300 inline-flex items-center justify-center"
+                className="rounded-xl bg-linear-to-r from-indigo-600 to-pink-500 px-8 py-3 text-lg font-bold text-white shadow-2xl hover:scale-105 hover:from-indigo-700 hover:to-pink-600 transition duration-300 inline-flex items-center justify-center"
               >
                 Start Free Trial
               </Link>
-              <a href="#features" className="rounded-xl border-2 border-indigo-600 px-10 py-4 text-xl font-bold text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white dark:bg-slate-800 dark:text-indigo-300 dark:border-indigo-400 dark:hover:bg-indigo-600 dark:hover:border-indigo-600 transition duration-300 shadow-lg">See Features</a>
+              <a href="#features" className="rounded-xl border-2 border-indigo-400 px-8 py-3 text-lg font-bold text-indigo-400 bg-slate-800/50 backdrop-blur-sm hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition duration-300 shadow-lg">See Features</a>
             </div>
-            {/* Testimonial section removed */}
           </div>
         </section>
 
@@ -204,10 +294,14 @@ const HomePage = () => {
               
               {/* Case Study Card 1: D2C Skincare Brand */}
               <div className="rounded-xl bg-white dark:bg-slate-900 p-8 shadow-lg dark:shadow-none transition duration-300 hover:scale-105 hover:shadow-indigo-300/40 dark:hover:shadow-indigo-500/20 border-l-4 border-indigo-500">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">D2C Skincare Brand</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">D2C Skincare Brand <span className="text-sm font-normal text-gray-600 dark:text-gray-400">(Mumbai)</span></h3>
+                <p className="text-sm text-indigo-600 dark:text-indigo-400 font-semibold mb-4">- Growth plan</p>
                 <div className="space-y-3">
+                  <p className="text-gray-700 dark:text-gray-200 text-sm">
+                    <span className="font-semibold text-gray-900 dark:text-white">Generated:</span> 87 authentic reviews + 45 video testimonials
+                  </p>
                   <p className="text-gray-700 dark:text-gray-200">
-                    <span className="font-semibold text-indigo-600 dark:text-indigo-400">Result:</span> 340% increase in organic traffic, 12.4 lakhs in attributed sales.
+                    <span className="font-semibold text-indigo-600 dark:text-indigo-400">Result:</span> 340% increase in organic traffic, ₹12.4 lakhs in attributed sales
                   </p>
                   <p className="text-gray-700 dark:text-gray-200">
                     <span className="font-semibold text-indigo-600 dark:text-indigo-400">ROI:</span> 9.5x
@@ -217,10 +311,14 @@ const HomePage = () => {
 
               {/* Case Study Card 2: Local Restaurant Chain */}
               <div className="rounded-xl bg-white dark:bg-slate-900 p-8 shadow-lg dark:shadow-none transition duration-300 hover:scale-105 hover:shadow-green-300/40 dark:hover:shadow-green-500/20 border-l-4 border-green-500">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Local Restaurant Chain</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Local Restaurant Chain <span className="text-sm font-normal text-gray-600 dark:text-gray-400">(Delhi NCR)</span></h3>
+                <p className="text-sm text-green-600 dark:text-green-400 font-semibold mb-4">- Starter plan</p>
                 <div className="space-y-3">
+                  <p className="text-gray-700 dark:text-gray-200 text-sm">
+                    <span className="font-semibold text-gray-900 dark:text-white">Generated:</span> 32 food review videos + 150+ social media posts
+                  </p>
                   <p className="text-gray-700 dark:text-gray-200">
-                    <span className="font-semibold text-green-600 dark:text-green-400">Result:</span> 28% increase in weekend footfall, 4.2 to 4.7 rating improvement.
+                    <span className="font-semibold text-green-600 dark:text-green-400">Result:</span> 28% increase in weekend footfall, 4.2★ to 4.7★ rating improvement
                   </p>
                   <p className="text-gray-700 dark:text-gray-200">
                     <span className="font-semibold text-green-600 dark:text-green-400">ROI:</span> 11.2x
@@ -230,10 +328,14 @@ const HomePage = () => {
 
               {/* Case Study Card 3: Tech Startup */}
               <div className="rounded-xl bg-white dark:bg-slate-900 p-8 shadow-lg dark:shadow-none transition duration-300 hover:scale-105 hover:shadow-pink-300/40 dark:hover:shadow-pink-500/20 border-l-4 border-pink-500">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Tech Startup</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Tech Startup <span className="text-sm font-normal text-gray-600 dark:text-gray-400">(Bangalore)</span></h3>
+                <p className="text-sm text-pink-600 dark:text-pink-400 font-semibold mb-4">- Enterprise plan</p>
                 <div className="space-y-3">
+                  <p className="text-gray-700 dark:text-gray-200 text-sm">
+                    <span className="font-semibold text-gray-900 dark:text-white">Generated:</span> 200+ tutorial videos + 500+ micro-reviews
+                  </p>
                   <p className="text-gray-700 dark:text-gray-200">
-                    <span className="font-semibold text-pink-600 dark:text-pink-400">Result:</span> 56% reduction in CAC, 2.3x increase in demo requests.
+                    <span className="font-semibold text-pink-600 dark:text-pink-400">Result:</span> 56% reduction in CAC, 2.3x increase in demo requests
                   </p>
                   <p className="text-gray-700 dark:text-gray-200">
                     <span className="font-semibold text-pink-600 dark:text-pink-400">ROI:</span> 14.8x
@@ -248,11 +350,13 @@ const HomePage = () => {
         {/* Pricing Section */}
   <section className="py-16 bg-gray-50 dark:bg-slate-800" id="pricing">
           <div className="container mx-auto px-6">
-            <h2 className="text-center text-4xl font-extrabold text-indigo-600 dark:text-indigo-300 mb-4">Simple Pricing</h2>
+            <h2 className="text-center text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-2">
+              💰 <span className="text-indigo-600 dark:text-indigo-300">Value for Your Money</span>
+            </h2>
             <p className="text-center text-gray-700 dark:text-gray-200 mb-12 max-w-2xl mx-auto text-lg">
               Choose the plan that works best for you. No hidden fees, cancel anytime.
             </p>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-6xl mx-auto">
               
               {/* Starter Plan */}
               <div className="rounded-xl bg-white dark:bg-slate-900 p-8 border-2 border-gray-200 dark:border-slate-600 transition duration-300 hover:border-indigo-600 dark:hover:border-indigo-400">
@@ -261,22 +365,26 @@ const HomePage = () => {
                   <span className="text-4xl font-extrabold text-gray-900 dark:text-gray-100">₹4,999</span>
                   <span className="text-gray-600 dark:text-gray-200">/month</span>
                 </div>
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-3 mb-6 text-sm">
                   <li className="flex items-start text-gray-700 dark:text-gray-200">
-                    <span className="mr-2 mt-1">✓</span> 
+                    <span className="mr-2 mt-1 text-green-500">✓</span> 
                     <span>10 creator collaborations</span>
                   </li>
                   <li className="flex items-start text-gray-700 dark:text-gray-200">
-                    <span className="mr-2 mt-1">✓</span> 
-                    <span>15 pieces of UGC</span>
+                    <span className="mr-2 mt-1 text-green-500">✓</span> 
+                    <span>15 pieces of UGC content</span>
                   </li>
                   <li className="flex items-start text-gray-700 dark:text-gray-200">
-                    <span className="mr-2 mt-1">✓</span> 
-                    <span>Basic DSMA</span>
+                    <span className="mr-2 mt-1 text-green-500">✓</span> 
+                    <span>Basic DSMA across 3 platforms</span>
                   </li>
-                  <li className="flex items-start text-gray-700 dark:text-gray-200 font-semibold">
+                  <li className="flex items-start text-gray-700 dark:text-gray-200">
+                    <span className="mr-2 mt-1 text-green-500">✓</span> 
+                    <span>Analytics dashboard</span>
+                  </li>
+                  <li className="flex items-start text-gray-700 dark:text-gray-200 font-semibold border-t pt-3 mt-3">
                     <span className="mr-2 mt-1">🎯</span> 
-                    <span>Perfect for: Local businesses</span>
+                    <span>Perfect for: Local businesses, startups, D2C brands testing UGC</span>
                   </li>
                 </ul>
                 <button className="w-full rounded-lg bg-gray-800 px-4 py-3 text-white hover:bg-gray-900 transition duration-300">
@@ -296,22 +404,30 @@ const HomePage = () => {
                   <span className="text-4xl font-extrabold text-white">₹12,999</span>
                   <span className="text-indigo-200">/month</span>
                 </div>
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-3 mb-6 text-sm">
                   <li className="flex items-start text-white">
-                    <span className="mr-2 mt-1">✓</span> 
+                    <span className="mr-2 mt-1 text-green-300">✓</span> 
                     <span>30 creator collaborations</span>
                   </li>
                   <li className="flex items-start text-white">
-                    <span className="mr-2 mt-1">✓</span> 
-                    <span>50 pieces of UGC</span>
+                    <span className="mr-2 mt-1 text-green-300">✓</span> 
+                    <span>50 pieces of UGC content</span>
                   </li>
                   <li className="flex items-start text-white">
-                    <span className="mr-2 mt-1">✓</span> 
+                    <span className="mr-2 mt-1 text-green-300">✓</span> 
+                    <span>Advanced DSMA across all major platforms</span>
+                  </li>
+                  <li className="flex items-start text-white">
+                    <span className="mr-2 mt-1 text-green-300">✓</span> 
+                    <span>A/B testing & optimization</span>
+                  </li>
+                  <li className="flex items-start text-white">
+                    <span className="mr-2 mt-1 text-green-300">✓</span> 
                     <span>Dedicated account manager</span>
                   </li>
-                  <li className="flex items-start text-white font-semibold">
+                  <li className="flex items-start text-white font-semibold border-t border-indigo-400 pt-3 mt-3">
                     <span className="mr-2 mt-1">🎯</span> 
-                    <span>Perfect for: Scaling brands, e-commerce</span>
+                    <span>Perfect for: Scaling brands, e-commerce, service businesses</span>
                   </li>
                 </ul>
                 <button className="w-full rounded-lg bg-white px-4 py-3 text-indigo-600 font-semibold hover:bg-gray-100 transition duration-300">
@@ -325,22 +441,30 @@ const HomePage = () => {
                 <div className="mb-4">
                   <span className="text-3xl font-extrabold text-gray-900 dark:text-gray-100">Custom Pricing</span>
                 </div>
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-3 mb-6 text-sm">
                   <li className="flex items-start text-gray-700 dark:text-gray-200">
-                    <span className="mr-2 mt-1">✓</span> 
+                    <span className="mr-2 mt-1 text-green-500">✓</span> 
                     <span>Unlimited creators</span>
                   </li>
                   <li className="flex items-start text-gray-700 dark:text-gray-200">
-                    <span className="mr-2 mt-1">✓</span> 
+                    <span className="mr-2 mt-1 text-green-500">✓</span> 
                     <span>White-label options</span>
                   </li>
                   <li className="flex items-start text-gray-700 dark:text-gray-200">
-                    <span className="mr-2 mt-1">✓</span> 
-                    <span>Custom AI models</span>
+                    <span className="mr-2 mt-1 text-green-500">✓</span> 
+                    <span>API integration</span>
                   </li>
-                  <li className="flex items-start text-gray-700 dark:text-gray-200 font-semibold">
+                  <li className="flex items-start text-gray-700 dark:text-gray-200">
+                    <span className="mr-2 mt-1 text-green-500">✓</span> 
+                    <span>Custom AI models for your brand</span>
+                  </li>
+                  <li className="flex items-start text-gray-700 dark:text-gray-200">
+                    <span className="mr-2 mt-1 text-green-500">✓</span> 
+                    <span>Web3 loyalty programs</span>
+                  </li>
+                  <li className="flex items-start text-gray-700 dark:text-gray-200 font-semibold border-t pt-3 mt-3">
                     <span className="mr-2 mt-1">🎯</span> 
-                    <span>Perfect for: Established brands, agencies</span>
+                    <span>Perfect for: Established brands, agencies, multi-location businesses</span>
                   </li>
                 </ul>
                 <button className="w-full rounded-lg bg-gray-800 px-4 py-3 text-white hover:bg-gray-900 transition duration-300">
@@ -352,10 +476,12 @@ const HomePage = () => {
 
             {/* ROI Guarantee Section */}
             <div className="mt-16 max-w-4xl mx-auto">
-              <div className="rounded-2xl bg-linear-to-r from-indigo-600 to-pink-500 p-8 md:p-12 text-center shadow-2xl">
-                <h3 className="text-3xl font-extrabold text-white mb-4">ROI Guarantee</h3>
-                <p className="text-xl text-white/90 leading-relaxed">
-                  Most clients see <span className="font-bold text-yellow-300">300-500% ROI</span> within 90 days or we work with you until you do.
+              <div className="rounded-2xl bg-linear-to-r from-indigo-600 to-pink-500 p-8 md:p-10 text-center shadow-2xl border-2 border-yellow-400">
+                <h3 className="text-3xl font-extrabold text-white mb-4 flex items-center justify-center">
+                  <span className="mr-3 text-4xl">👍</span> ROI Guarantee
+                </h3>
+                <p className="text-lg md:text-xl text-white leading-relaxed">
+                  Most clients see <span className="font-bold text-yellow-300">300-500% ROI</span> within 90 days or we work with you until you do – can be tracked transparently in Saubh's dashboard.
                 </p>
               </div>
             </div>
@@ -431,33 +557,83 @@ const HomePage = () => {
       )}
       <footer className="bg-gray-800 py-12">
         <div className="container mx-auto px-6">
-          {/* Footer Links */}
-          <div className="flex flex-wrap justify-center gap-6 mb-8">
-            <a href="#about" className="text-gray-300 hover:text-white transition duration-300">About</a>
-            <a href="#pricing" className="text-gray-300 hover:text-white transition duration-300">Pricing</a>
-            <a href="#careers" className="text-gray-300 hover:text-white transition duration-300">Careers</a>
-            <a href="#contact" className="text-gray-300 hover:text-white transition duration-300">Contact</a>
-            <a href="#privacy" className="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a>
-            <a href="#blog" className="text-gray-300 hover:text-white transition duration-300">Blog</a>
+          {/* Call-to-Action Footer */}
+          <div className="mb-8 text-center">
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center justify-center">
+              <span className="mr-2">📢</span> Call-to-Action Footer
+            </h3>
+            
+            {/* Businesses CTA */}
+            <div className="mb-4">
+              <p className="text-gray-300 text-base md:text-lg mb-2">
+                <span className="font-semibold text-white">Businesses:</span>
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <a href="#launch" className="text-indigo-400 hover:text-indigo-300 transition duration-300 font-medium">[Launch Campaign]</a>
+                <span className="text-gray-500">|</span>
+                <a href="#strategy" className="text-indigo-400 hover:text-indigo-300 transition duration-300 font-medium">[Book Strategy Call]</a>
+                <span className="text-gray-500">|</span>
+                <a href="#case-studies" className="text-indigo-400 hover:text-indigo-300 transition duration-300 font-medium">[View Case Studies]</a>
+              </div>
+            </div>
+            
+            {/* Creators CTA */}
+            <div className="mb-4">
+              <p className="text-gray-300 text-base md:text-lg mb-2">
+                <span className="font-semibold text-white">Creators:</span>
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <a href="#earning" className="text-pink-400 hover:text-pink-300 transition duration-300 font-medium">[Start Earning]</a>
+                <span className="text-gray-500">|</span>
+                <a href="#campaigns" className="text-pink-400 hover:text-pink-300 transition duration-300 font-medium">[See Active Campaigns]</a>
+                <span className="text-gray-500">|</span>
+                <a href="#success" className="text-pink-400 hover:text-pink-300 transition duration-300 font-medium">[Creator Success Stories]</a>
+              </div>
+            </div>
           </div>
-          
-          {/* Footer CTA */}
-          <div className="text-center mb-8">
-            <p className="text-gray-300 text-lg mb-4">
-              <span className="font-semibold text-white">Businesses:</span> 
-              <a href="#launch" className="text-indigo-400 hover:text-indigo-300 transition duration-300 ml-2">[Launch Campaign]</a>
-              <span className="mx-2">|</span>
-              <a href="#strategy" className="text-indigo-400 hover:text-indigo-300 transition duration-300">[Book Strategy Call]</a>
-            </p>
-            <p className="text-gray-300 text-lg">
-              <span className="font-semibold text-white">Creators:</span> 
-              <a href="#earning" className="text-indigo-400 hover:text-indigo-300 transition duration-300 ml-2">[Start Earning]</a>
-            </p>
+
+          {/* Learn More Links */}
+          <div className="mb-8">
+            <p className="text-center text-gray-400 mb-3 font-semibold">Learn More:</p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <a href="#about" className="text-gray-300 hover:text-white transition duration-300">About</a>
+              <span className="text-gray-600">|</span>
+              <a href="#pricing" className="text-gray-300 hover:text-white transition duration-300">Pricing</a>
+              <span className="text-gray-600">|</span>
+              <a href="#careers" className="text-gray-300 hover:text-white transition duration-300">Careers</a>
+              <span className="text-gray-600">|</span>
+              <a href="#contact" className="text-gray-300 hover:text-white transition duration-300">Contact</a>
+              <span className="text-gray-600">|</span>
+              <a href="#privacy" className="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a>
+              <span className="text-gray-600">|</span>
+              <a href="#blog" className="text-gray-300 hover:text-white transition duration-300">Blog</a>
+            </div>
+          </div>
+
+          {/* Social Media Links */}
+          <div className="mb-8">
+            <p className="text-center text-gray-400 mb-3 font-semibold">Follow Us:</p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition duration-300">LinkedIn</a>
+              <span className="text-gray-600">|</span>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-500 transition duration-300">Facebook</a>
+              <span className="text-gray-600">|</span>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-pink-500 transition duration-300">Instagram</a>
+              <span className="text-gray-600">|</span>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sky-400 transition duration-300">Twitter</a>
+              <span className="text-gray-600">|</span>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-red-500 transition duration-300">YouTube</a>
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <div className="text-center mb-6">
+            <p className="text-gray-400 text-sm italic">Made in India, Owned by People</p>
           </div>
           
           {/* Copyright */}
-          <div className="text-center text-gray-400">
-            <p>&copy; 2025 Saubh Tech Private Limited.</p>
+          <div className="text-center text-gray-500 text-sm border-t border-gray-700 pt-6">
+            <p>Copyright © 2025 Saubh Tech Private Limited.</p>
           </div>
         </div>
       </footer>
