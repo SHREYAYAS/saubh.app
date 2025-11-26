@@ -71,16 +71,16 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  const theme = localStorage.getItem('saubh-theme') || 'default';
+                  const theme = localStorage.getItem('saubh-theme') || 'system';
+                  const getSystemTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                   const themes = {
-                    default: ['bg-linear-to-br', 'from-slate-50', 'via-indigo-50', 'to-pink-50', 'text-gray-900'],
-                    cooler: ['bg-linear-to-br', 'from-slate-100', 'via-sky-50', 'to-blue-50', 'text-gray-900'],
-                    warmer: ['bg-linear-to-br', 'from-rose-50', 'via-orange-50', 'to-amber-50', 'text-gray-900'],
-                    dark: ['bg-linear-to-br', 'from-slate-900', 'via-slate-800', 'to-indigo-900', 'text-white']
+                    light: ['bg-gradient-to-br', 'from-indigo-50', 'via-purple-50', 'to-pink-50', 'text-gray-900'],
+                    dark: ['bg-gradient-to-br', 'from-slate-900', 'via-indigo-950', 'to-purple-900', 'text-white']
                   };
-                  document.documentElement.classList.toggle('dark', theme === 'dark');
-                  if (themes[theme]) {
-                    document.body.classList.add(...themes[theme]);
+                  const actualTheme = theme === 'system' ? getSystemTheme() : theme;
+                  document.documentElement.classList.toggle('dark', actualTheme === 'dark');
+                  if (themes[actualTheme]) {
+                    document.body.classList.add(...themes[actualTheme]);
                   }
                 } catch (e) {}
               })();

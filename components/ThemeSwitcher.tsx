@@ -2,36 +2,23 @@
 
 import { useEffect, useState } from "react";
 
-type ThemeKey = "default" | "cooler" | "warmer" | "dark";
+type ThemeKey = "system" | "light" | "dark";
 
 // Keep all classes explicit so Tailwind includes them in the build
 const THEME_CLASSES: Record<ThemeKey, string[]> = {
-  default: [
-    "bg-linear-to-br",
-    "from-slate-50",
-    "via-indigo-50",
+  system: [], // Will be determined by system preference
+  light: [
+    "bg-gradient-to-br",
+    "from-indigo-50",
+    "via-purple-50",
     "to-pink-50",
     "text-gray-900",
   ],
-  cooler: [
-    "bg-linear-to-br",
-    "from-slate-100",
-    "via-sky-50",
-    "to-blue-50",
-    "text-gray-900",
-  ],
-  warmer: [
-    "bg-linear-to-br",
-    "from-rose-50",
-    "via-orange-50",
-    "to-amber-50",
-    "text-gray-900",
-  ],
   dark: [
-    "bg-linear-to-br",
+    "bg-gradient-to-br",
     "from-slate-900",
-    "via-slate-800",
-    "to-indigo-900",
+    "via-indigo-950",
+    "to-purple-900",
     "text-white",
   ],
 };
@@ -41,20 +28,32 @@ const ALL_THEME_TOKENS = Array.from(
 );
 
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState<ThemeKey>("default");
+  const [theme, setTheme] = useState<ThemeKey>("system");
   const [mounted, setMounted] = useState(false);
+
+  // Determine system preference
+  const getSystemTheme = (): "light" | "dark" => {
+    if (typeof window === "undefined") return "light";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
 
   // Apply theme to <body>
   const applyTheme = (key: ThemeKey) => {
     if (typeof document === "undefined") return;
     const body = document.body;
     const html = document.documentElement;
+    
     // Remove all known theme tokens
     body.classList.remove(...ALL_THEME_TOKENS);
+    
+    // Determine actual theme to apply
+    const actualTheme = key === "system" ? getSystemTheme() : key;
+    
     // Add chosen theme tokens
-    body.classList.add(...THEME_CLASSES[key]);
+    body.classList.add(...THEME_CLASSES[actualTheme]);
+    
     // Toggle class-based dark mode for Tailwind
-    if (key === "dark") {
+    if (actualTheme === "dark") {
       html.classList.add("dark");
     } else {
       html.classList.remove("dark");
@@ -63,9 +62,20 @@ export default function ThemeSwitcher() {
 
   useEffect(() => {
     setMounted(true);
-    const saved = (localStorage.getItem("saubh-theme") as ThemeKey) || "default";
+    const saved = (localStorage.getItem("saubh-theme") as ThemeKey) || "system";
     setTheme(saved);
     applyTheme(saved);
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      if (saved === "system") {
+        applyTheme("system");
+      }
+    };
+    mediaQuery.addEventListener("change", handleChange);
+    
+    return () => mediaQuery.removeEventListener("change", handleChange);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -85,7 +95,7 @@ export default function ThemeSwitcher() {
           disabled
           className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-800 dark:text-gray-200 px-2 py-1 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          <option>Default</option>
+          <option>System</option>
         </select>
       </label>
     );
@@ -100,9 +110,8 @@ export default function ThemeSwitcher() {
         onChange={(e) => onChange(e.target.value as ThemeKey)}
         className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-800 dark:text-gray-200 px-2 py-1 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
       >
-        <option value="default">Default</option>
-        <option value="cooler">Cooler</option>
-        <option value="warmer">Warmer</option>
+        <option value="system">System</option>
+        <option value="light">Light</option>
         <option value="dark">Dark</option>
       </select>
     </label>
