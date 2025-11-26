@@ -140,15 +140,15 @@ const HomePage = () => {
 
   <main className="grow">
         {/* Hero Section with Animated Background */}
-        <section className="relative py-20 md:py-32 overflow-hidden" id="hero">
+        <section className="relative py-20 md:py-32 overflow-hidden bg-white dark:bg-transparent" id="hero">
           <div className="container mx-auto px-6 text-center relative">
-            <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl md:text-7xl">
-              Unlock Your <span className="text-indigo-600 dark:text-indigo-400">Productivity</span> Potential
+            <h1 className="text-5xl font-extrabold tracking-tight text-black dark:text-white sm:text-6xl md:text-7xl">
+              Unlock Your <span className="text-indigo-700 dark:text-indigo-400">Productivity</span> Potential
             </h1>
-            <p className="mt-6 text-xl text-gray-800 dark:text-gray-300 md:text-2xl max-w-3xl mx-auto">
+            <p className="mt-6 text-xl text-black dark:text-gray-300 md:text-2xl max-w-3xl mx-auto font-medium">
               A seamless, offline-ready web application designed for speed, reliability, and delight on any device.
             </p>
-            <p className="mt-2 text-lg text-indigo-600 dark:text-indigo-400 font-semibold">Loved by thousands of users worldwide</p>
+            <p className="mt-2 text-lg text-indigo-700 dark:text-indigo-400 font-bold">Loved by thousands of users worldwide</p>
             <div className="mt-10 flex justify-center space-x-4 flex-wrap gap-4">
               <Link href="/get-started" aria-label="Start free trial">
                 <button 
@@ -157,7 +157,7 @@ const HomePage = () => {
                   Start Free Trial
                 </button>
               </Link>
-              <a href="#features" className="rounded-xl border-2 border-indigo-600 px-10 py-4 text-xl font-bold text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white dark:bg-transparent dark:text-indigo-300 dark:border-indigo-300 dark:hover:bg-indigo-600 transition duration-300">See Features</a>
+              <a href="#features" className="rounded-xl border-2 border-indigo-700 px-10 py-4 text-xl font-bold text-indigo-700 bg-white hover:bg-indigo-700 hover:text-white dark:bg-transparent dark:text-indigo-300 dark:border-indigo-300 dark:hover:bg-indigo-600 transition duration-300 shadow-lg">See Features</a>
             </div>
             {/* Testimonial section removed */}
           </div>
