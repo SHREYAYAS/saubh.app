@@ -65,6 +65,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('saubh-theme') || 'default';
+                  const themes = {
+                    default: ['bg-linear-to-br', 'from-slate-50', 'via-indigo-50', 'to-pink-50', 'text-gray-900'],
+                    cooler: ['bg-linear-to-br', 'from-slate-100', 'via-sky-50', 'to-blue-50', 'text-gray-900'],
+                    warmer: ['bg-linear-to-br', 'from-rose-50', 'via-orange-50', 'to-amber-50', 'text-gray-900'],
+                    dark: ['bg-linear-to-br', 'from-slate-900', 'via-slate-800', 'to-indigo-900', 'text-white']
+                  };
+                  document.documentElement.classList.toggle('dark', theme === 'dark');
+                  if (themes[theme]) {
+                    document.body.classList.add(...themes[theme]);
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen antialiased">
         {children}
       </body>
