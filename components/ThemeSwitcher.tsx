@@ -17,8 +17,8 @@ const THEME_CLASSES: Record<ThemeKey, string[]> = {
   dark: [
     "bg-gradient-to-br",
     "from-slate-900",
-    "via-indigo-950",
-    "to-purple-900",
+    "via-slate-800",
+    "to-indigo-900",
     "text-white",
   ],
 };

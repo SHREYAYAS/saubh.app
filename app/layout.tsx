@@ -75,7 +75,7 @@ export default function RootLayout({
                   const getSystemTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                   const themes = {
                     light: ['bg-gradient-to-br', 'from-indigo-50', 'via-purple-50', 'to-pink-50', 'text-gray-900'],
-                    dark: ['bg-gradient-to-br', 'from-slate-900', 'via-indigo-950', 'to-purple-900', 'text-white']
+                    dark: ['bg-gradient-to-br', 'from-slate-900', 'via-slate-800', 'to-indigo-900', 'text-white']
                   };
                   const actualTheme = theme === 'system' ? getSystemTheme() : theme;
                   document.documentElement.classList.toggle('dark', actualTheme === 'dark');
