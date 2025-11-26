@@ -25,6 +25,30 @@ export const metadata: Metadata = {
     statusBarStyle: 'default',
     title: 'SaubhApp',
   },
+  // Open Graph metadata for link previews
+  openGraph: {
+    title: 'SaubhApp - Unlock Your Productivity Potential',
+    description: 'A seamless, offline-ready web application designed for speed, reliability, and delight on any device.',
+    url: 'https://saubh-app.vercel.app',
+    siteName: 'SaubhApp',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'SaubhApp Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  // Twitter Card metadata
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SaubhApp - Unlock Your Productivity Potential',
+    description: 'A seamless, offline-ready web application designed for speed, reliability, and delight on any device.',
+    images: ['/og-image.jpg'],
+  },
   // -------------------------------
 };
 
