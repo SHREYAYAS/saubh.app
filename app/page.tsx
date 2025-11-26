@@ -140,15 +140,15 @@ const HomePage = () => {
 
   <main className="grow">
         {/* Hero Section with Animated Background */}
-        <section className="relative py-20 md:py-32 overflow-hidden bg-white dark:bg-transparent" id="hero">
+        <section className="relative py-20 md:py-32 overflow-hidden bg-linear-to-br from-indigo-50 to-pink-50 dark:bg-transparent" id="hero">
           <div className="container mx-auto px-6 text-center relative">
-            <h1 className="text-5xl font-extrabold tracking-tight text-black dark:text-white sm:text-6xl md:text-7xl">
-              Unlock Your <span className="text-indigo-700 dark:text-indigo-400">Productivity</span> Potential
+            <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl md:text-7xl">
+              Unlock Your <span className="text-indigo-600 dark:text-indigo-400">Productivity</span> Potential
             </h1>
-            <p className="mt-6 text-xl text-black dark:text-gray-300 md:text-2xl max-w-3xl mx-auto font-medium">
+            <p className="mt-6 text-xl text-gray-700 dark:text-gray-300 md:text-2xl max-w-3xl mx-auto font-medium">
               A seamless, offline-ready web application designed for speed, reliability, and delight on any device.
             </p>
-            <p className="mt-2 text-lg text-indigo-700 dark:text-indigo-400 font-bold">Loved by thousands of users worldwide</p>
+            <p className="mt-2 text-lg text-indigo-600 dark:text-indigo-400 font-bold">Loved by thousands of users worldwide</p>
             <div className="mt-10 flex justify-center space-x-4 flex-wrap gap-4">
               <Link href="/get-started" aria-label="Start free trial">
                 <button 
@@ -157,14 +157,14 @@ const HomePage = () => {
                   Start Free Trial
                 </button>
               </Link>
-              <a href="#features" className="rounded-xl border-2 border-indigo-700 px-10 py-4 text-xl font-bold text-indigo-700 bg-white hover:bg-indigo-700 hover:text-white dark:bg-transparent dark:text-indigo-300 dark:border-indigo-300 dark:hover:bg-indigo-600 transition duration-300 shadow-lg">See Features</a>
+              <a href="#features" className="rounded-xl border-2 border-indigo-600 px-10 py-4 text-xl font-bold text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white dark:bg-transparent dark:text-indigo-300 dark:border-indigo-300 dark:hover:bg-indigo-600 transition duration-300 shadow-lg">See Features</a>
             </div>
             {/* Testimonial section removed */}
           </div>
         </section>
 
         {/* Feature Section - Responsive Grid Layout */}
-        <section className="py-16" id="features">
+        <section className="py-16 bg-white dark:bg-transparent" id="features">
           <div className="container mx-auto px-6">
             <h2 className="text-center text-4xl font-extrabold text-gray-900 dark:text-white mb-12">Why Choose <span className="text-indigo-600 dark:text-indigo-400">SaubhApp</span>?</h2>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -191,17 +191,17 @@ const HomePage = () => {
         </section>
 
         {/* Pricing Section */}
-  <section className="py-16" id="pricing">
+  <section className="py-16 bg-gray-50 dark:bg-transparent" id="pricing">
           <div className="container mx-auto px-6">
             <h2 className="text-center text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-4">Simple Pricing</h2>
-            <p className="text-center text-gray-800 dark:text-gray-300 mb-12 max-w-2xl mx-auto text-lg">
+            <p className="text-center text-gray-700 dark:text-gray-300 mb-12 max-w-2xl mx-auto text-lg">
               Choose the plan that works best for you. No hidden fees, cancel anytime.
             </p>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-5xl mx-auto">
               
               {/* Basic Plan */}
-              <div className="rounded-xl bg-gray-50 dark:bg-white/5 p-8 border-2 border-gray-200 dark:border-slate-700 transition duration-300 hover:border-indigo-600 dark:hover:border-indigo-500">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Basic</h3>
+              <div className="rounded-xl bg-white dark:bg-white/5 p-8 border-2 border-gray-200 dark:border-slate-700 transition duration-300 hover:border-indigo-600 dark:hover:border-indigo-500">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Basic</h3>
                 <div className="mb-4">
                   <span className="text-4xl font-extrabold text-gray-900 dark:text-gray-100">$9</span>
                   <span className="text-gray-600 dark:text-gray-300">/month</span>
@@ -254,8 +254,8 @@ const HomePage = () => {
               </div>
 
               {/* Enterprise Plan */}
-              <div className="rounded-xl bg-gray-50 dark:bg-white/5 p-8 border-2 border-gray-200 dark:border-slate-700 transition duration-300 hover:border-indigo-600 dark:hover:border-indigo-500">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+              <div className="rounded-xl bg-white dark:bg-white/5 p-8 border-2 border-gray-200 dark:border-slate-700 transition duration-300 hover:border-indigo-600 dark:hover:border-indigo-500">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Enterprise</h3>
                 <div className="mb-4">
                   <span className="text-4xl font-extrabold text-gray-900 dark:text-gray-100">$99</span>
                   <span className="text-gray-600 dark:text-gray-300">/month</span>
@@ -284,7 +284,7 @@ const HomePage = () => {
         </section>
 
         {/* About Section */}
-  <section className="py-16" id="about">
+  <section className="py-16 bg-white dark:bg-transparent" id="about">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-center text-4xl font-extrabold text-gray-900 dark:text-white mb-8">About <span className="text-indigo-600 dark:text-indigo-400">SaubhApp</span></h2>
