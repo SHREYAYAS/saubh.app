@@ -8,14 +8,14 @@ type ThemeKey = "system" | "light" | "dark";
 const THEME_CLASSES: Record<ThemeKey, string[]> = {
   system: [], // Will be determined by system preference
   light: [
-    "bg-gradient-to-br",
+    "bg-linear-to-br",
     "from-indigo-50",
     "via-purple-50",
     "to-pink-50",
     "text-gray-900",
   ],
   dark: [
-    "bg-gradient-to-br",
+    "bg-linear-to-br",
     "from-slate-900",
     "via-slate-800",
     "to-indigo-900",

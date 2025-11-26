@@ -5,6 +5,7 @@ import "./globals.css";
 // Assuming you kept your font definitions (Geist, Geist_Mono)
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://saubh-app.vercel.app'),
   title: 'SaubhApp Responsive PWA',
   description: 'A responsive homepage built with Next.js and Tailwind CSS, converted to PWA.',
   
