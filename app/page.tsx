@@ -4,6 +4,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
+
+// Dynamically import ParticleBackground (client-side only)
+const ParticleBackground = dynamic(() => import('@/components/ParticleBackground'), {
+  ssr: false,
+  loading: () => null,
+});
 
 const HomePage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -150,6 +157,9 @@ const HomePage = () => {
   <main className="grow">
         {/* Hero Section with Animated Background */}
   <section className="relative py-16 md:py-28 overflow-hidden bg-linear-to-br from-slate-900 via-slate-800 to-slate-900" id="hero">
+          {/* 3D Particle Background */}
+          <ParticleBackground />
+          
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-linear-to-br from-indigo-500/10 to-transparent rounded-full blur-3xl animate-pulse"></div>
